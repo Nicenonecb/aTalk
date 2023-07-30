@@ -1,12 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
+
+
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import  AITalk from  './views/AITalk/index'
+
+// 创建一些屏幕组件
+function Screen1() {
+  return (
+    <View style={styles.container}>
+      <Text>Screen 1</Text>
+    </View>
+  );
+}
+
+function Screen2() {
+  return (
+    <View style={styles.container}>
+      <Text>Screen 2</Text>
+    </View>
+  );
+}
+
+// 创建 tab 导航器
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="AI talk" component={AITalk} />
+        <Tab.Screen name="我" component={Screen2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -18,3 +45,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
