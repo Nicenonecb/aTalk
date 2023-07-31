@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { StyleSheet, Text, View } from 'react-native';
-import { ListItem,Icon } from '@rneui/themed';
+import { ListItem,Icon,Avatar} from '@rneui/themed';
 
 export default function AITalk() {
   const [expanded, setExpanded] = useState(false)
@@ -17,7 +17,9 @@ export default function AITalk() {
     },
     // 以此类推，你可以添加更多的对象...
   ];
-  
+  const log = ()=>{
+    
+  }
   return (
     <View>
       <ListItem.Accordion
@@ -33,7 +35,16 @@ export default function AITalk() {
         onPress={() => {
           setExpanded(!expanded);
         }}>
-       
+       {list2.map((l, i) => (
+    <ListItem key={i} onPress={log} bottomDivider>
+      <Avatar title={l.name[0]} source={{ uri: l.avatar_url }} />
+      <ListItem.Content>
+        <ListItem.Title>{l.name}</ListItem.Title>
+        <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
+      </ListItem.Content>
+      <ListItem.Chevron />
+    </ListItem>
+  ))}
       </ListItem.Accordion>
     </View>
   )
