@@ -4,8 +4,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import  AITalk from  './views/AITalk/index'
+import AITalk from './views/AITalk/index'
+import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper'
 
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'tomato',
+    secondary: 'yellow',
+  },
+};
 // 创建一些屏幕组件
 function Screen1() {
   return (
@@ -28,12 +38,16 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="AI talk" component={AITalk} />
-        <Tab.Screen name="我" component={Screen2} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <PaperProvider theme={theme}>
+      <NavigationContainer>
+        <Tab.Navigator>
+
+          <Tab.Screen name="AI talk" component={AITalk} />
+          <Tab.Screen name="我" component={Screen2} />
+
+        </Tab.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
 
