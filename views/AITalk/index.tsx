@@ -2,8 +2,17 @@ import React, { useState } from "react"
 import { StyleSheet, Text, View } from 'react-native';
 import { ListItem, Icon, Avatar } from '@rneui/themed';
 import { Card, IconButton } from 'react-native-paper';
+import { StackScreenProps } from '@react-navigation/stack';
 
-export default function AITalk() {
+type AITalkScreenProps = StackScreenProps<RootStackParamList, 'AITalk'>;
+
+type RootStackParamList = {
+  AITalk: undefined;
+  Dialogue: undefined; // 如果这个页面需要参数，你可以在这里指定
+  // ... 其他页面
+};
+
+export default function AITalk({ navigation }: AITalkScreenProps) {
   const [expanded, setExpanded] = useState(false)
   const [defaultLang, setSelectLang] = useState('英语')
   const optionList = [
@@ -21,6 +30,10 @@ export default function AITalk() {
   const selectLang = (v: any) => {
     setSelectLang(v.lang)
     setExpanded(false)
+  }
+
+  const enterTalk =()=>{
+     navigation.navigate('Dialogue')
   }
   return (
     <View>
@@ -58,7 +71,7 @@ export default function AITalk() {
 
       <Card>
         <View style={styles.cardTop}>
-          <Card.Title title='IT面试1' subtitle="模拟最真实的老外面试官" right={(props) => <IconButton {...props} icon="arrow-right-thin" onPress={() => { } } 
+          <Card.Title title='IT面试1' subtitle="模拟最真实的老外面试官" right={(props) => <IconButton {...props} icon="arrow-right-thin" onPress={() => enterTalk} 
           
           />}></Card.Title>
     
