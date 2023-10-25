@@ -41,7 +41,6 @@ export default function DialogueModal({ visible, hideModal }) {
 
             <Dialog visible={visible} onDismiss={hideModal} style={styles.dialog}>
                 <Dialog.Title style={styles.title}>新建对话卡片</Dialog.Title>
-
                     <Text style={styles.label}>语言选择:</Text>
                 <ListItem.Accordion
                     content={
@@ -88,8 +87,8 @@ export default function DialogueModal({ visible, hideModal }) {
                     />
 
                 <Dialog.Actions>
-                    <Button onPress={hideModal} style={styles.button}>取消</Button>
-                    <Button onPress={handleOk} style={styles.button}>确定</Button>
+                    <Dialog.Button onPress={hideModal} style={styles.button}>取消</Dialog.Button>
+                    <Dialog.Button onPress={handleOk} style={styles.button}>确定</Dialog.Button>
                 </Dialog.Actions>
             </Dialog>
 
